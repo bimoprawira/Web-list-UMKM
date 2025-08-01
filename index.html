@@ -1,31 +1,135 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>List UMKM - KKN 308</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKN 308 Desa Wonorejo - UMKM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="umkm-list" id="umkmList">
-    <h3>List UMKM</h3>
-    <div class="umkm-item" onclick="showRoute(UMKMS[0])">
-      <strong>Rumah Makan Sederhana</strong><br />
-      ⭐ 4.9 (120 reviews)<br />
-      📍 Jl. Desa No.1
-    </div>
-    <div class="umkm-item" onclick="showRoute(UMKMS[1])">
-      <strong>Bakso Enak</strong><br />
-      ⭐ 4.7 (98 reviews)<br />
-      📍 Jl. Sawah No.3
-    </div>
-  </div>
 
-  <div id="map"></div>
+    <header>
+        <nav class="container">
+            <a href="#" class="nav-logo">KKN 308 Desa Wonorejo</a>
+            <div class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#umkm">List UMKM</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-  <script src="index.js"></script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap">
-  </script>
+    <main>
+        <section id="home" class="container">
+            <div class="hero-content">
+                <h1>Temukan Potensi Desa Wonorejo</h1>
+                <p>Jelajahi berbagai Usaha Mikro, Kecil, dan Menengah (UMKM) yang menjadi tulang punggung perekonomian dan keunikan Desa Wonorejo. Dari kuliner lezat hingga kerajinan tangan yang memikat.</p>
+                <div class="hero-buttons">
+                    <a href="#umkm" class="btn btn-primary">Lihat List UMKM</a>
+                    <a href="#about" class="btn btn-secondary">Tentang Kami</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <h2>Tentang Kami</h2>
+            <div class="about-row">
+                <div class="about-image">
+                    </div>
+                <div class="about-text">
+                    <h3>KKN 308 Wonorejo</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque assumenda incidunt id cum. Fugiat repellat cumque delectus, at ipsum ad iure explicabo perferendis. At vero eos et accusamus et iusto odio dignissimos ducimus.</p>
+                    <a href="#" class="btn btn-secondary">Our Instagram</a>
+                </div>
+            </div>
+            <div class="about-row reverse">
+                <div class="about-image">
+                    </div>
+                <div class="about-text">
+                    <h3>Anggota KKN</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque assumenda incidunt id cum. Fugiat repellat cumque delectus, at ipsum ad iure explicabo perferendis. At vero eos et accusamus et iusto odio dignissimos ducimus.</p>
+                     <a href="#" class="btn btn-secondary">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="umkm" class="container">
+            <h2>List UMKM</h2>
+            <div class="umkm-container">
+                <div id="list-panel">
+                    <div class="umkm-card" data-lat="-7.5562" data-lng="110.8524" data-name="Soto Ayam Gobyos">
+                        <div class="card-image"></div>
+                        <div class="card-info">
+                            <h3>Soto Ayam Gobyos</h3>
+                            <p>⭐ 4.8 (150 reviews)</p>
+                            <p>📍 Jl. Merdeka No. 12</p>
+                        </div>
+                    </div>
+
+                    <div class="umkm-card" data-lat="-7.5580" data-lng="110.8550" data-name="Bakso Pak Kumis">
+                        <div class="card-image"></div>
+                        <div class="card-info">
+                             <h3>Bakso Pak Kumis</h3>
+                            <p>⭐ 4.9 (210 reviews)</p>
+                            <p>📍 Jl. Pahlawan No. 45</p>
+                        </div>
+                    </div>
+                    
+                    <div class="umkm-card" data-lat="-7.5545" data-lng="110.8510" data-name="Warung Makan Bu Tinah">
+                        <div class="card-image"></div>
+                        <div class="card-info">
+                             <h3>Warung Makan Bu Tinah</h3>
+                            <p>⭐ 4.7 (98 reviews)</p>
+                            <p>📍 Gg. Sejahtera III</p>
+                        </div>
+                    </div>
+                    
+                     <div class="umkm-card" data-lat="-7.5591" data-lng="110.8499" data-name="Ayam Goreng Mbah Karto">
+                        <div class="card-image"></div>
+                        <div class="card-info">
+                             <h3>Ayam Goreng Mbah Karto</h3>
+                            <p>⭐ 5.0 (300 reviews)</p>
+                            <p>📍 Jl. Raya Wonorejo</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="map-panel">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <h3>KKN 308</h3>
+                <p>Recusandae quos nesciunt veniam eum quia.</p>
+                <p>shaikhsadd258@gmail.com</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#umkm">Rooms</a>
+                <a href="#">Services</a>
+            </div>
+             <div class="footer-links">
+                <h3>Support</h3>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=geometry" async defer></script>
+    
+    <script src="index.js"></script>
 </body>
 </html>
