@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KKN 308 Desa Wonorejo - UMKM (Versi OSM)</title>
+    <title>KKN 308 Desa Wonorejo - UMKM</title>
 
     <link rel="stylesheet" href="style.css" />
 
@@ -24,21 +24,28 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <header>
       <nav class="container">
         <a href="#" class="nav-logo nav-logo-container">
           <div class="logo-placeholder">
-            <img src="images/logo kkn.png" alt="Logo KKN" />
+            <img src="images/logo kkn.png" alt="Logo KKN 308 Wonorejo" />
           </div>
           KKN 308 Desa Wonorejo
         </a>
         <div class="nav-menu">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#umkm">List UMKM</a>
-          <a href="#contact">Contact</a>
+          <a href="#home">Beranda</a>
+          <a href="#about">Tentang Kami</a>
+          <a href="#umkm">Daftar UMKM</a>
+          <a href="#contact">Kontak</a>
         </div>
       </nav>
     </header>
@@ -47,20 +54,73 @@
       <section id="home" class="container">
         <div class="hero-content">
           <h1>Temukan Potensi Desa Wonorejo</h1>
-          <p>
-            Jelajahi berbagai Usaha Mikro, Kecil, dan Menengah (UMKM) yang
-            menjadi tulang punggung perekonomian dan keunikan Desa Wonorejo.
-            Dari kuliner lezat hingga kerajinan tangan yang memikat.
-          </p>
+          <div class="desc-landing">
+            <p>
+              Jelajahi berbagai Usaha Mikro, Kecil, dan Menengah (UMKM) yang
+              menjadi tulang punggung perekonomian dan keunikan Desa Wonorejo.
+            </p>
+          </div>
+
           <div class="hero-buttons">
-            <a href="#umkm" class="btn btn-primary">Lihat List UMKM</a>
+            <a href="#umkm" class="btn btn-primary">Lihat Daftar UMKM</a>
             <a href="#about" class="btn btn-secondary">Tentang Kami</a>
           </div>
         </div>
       </section>
 
+      <section id="about" class="container">
+        <h2>Tentang Kami</h2>
+        <div class="about-row">
+          <img
+            src="images/logo kkn.png"
+            alt="Logo KKN 308 Wonorejo"
+            class="about-image-logo"
+          />
+          <div class="about-text">
+            <h3>KKN 308 Wonorejo</h3>
+            <p>
+              Kami adalah tim Kuliah Kerja Nyata (KKN) Kelompok 308 yang
+              berdedikasi untuk mengabdi kepada masyarakat Desa Wonorejo pada
+              tahun 2025. Dengan semangat kolaborasi, kami berfokus pada
+              pengembangan potensi desa melalui program kerja yang inovatif dan
+              berkelanjutan. Tujuan kami adalah memberikan kontribusi positif
+              bagi kemajuan dan kesejahteraan masyarakat Desa Wonorejo.
+            </p>
+            <a
+              href="https://www.instagram.com/cerita.wonorejo/"
+              target="_blank"
+              class="btn btn-secondary"
+              >Our Instagram</a
+            >
+          </div>
+        </div>
+        <div class="about-row reverse">
+          <div
+            class="about-image"
+            style="background-image: url('images/kkn1.jfif')"
+          ></div>
+          <div class="about-text">
+            <h3>Anggota KKN</h3>
+            <p>
+              Tim kami terdiri dari mahasiswa-mahasiswi dari berbagai disiplin
+              ilmu yang berkolaborasi untuk menyukseskan program kerja KKN di
+              Desa Wonorejo. Setiap anggota membawa keahlian dan semangat untuk
+              berkontribusi secara nyata bagi kemajuan masyarakat.
+            </p>
+            <a href="#" class="btn btn-secondary">Read More</a>
+          </div>
+        </div>
+      </section>
+
       <section id="umkm" class="container">
-        <h2>List UMKM</h2>
+        <h2>Daftar UMKM</h2>
+        <div class="search-container">
+          <input
+            type="text"
+            id="umkm-search"
+            placeholder="Cari UMKM berdasarkan nama..."
+          />
+        </div>
         <div class="umkm-container">
           <div id="list-panel">
             <div
@@ -76,6 +136,7 @@
                 <p>📍 Blimbing, Wonorejo, Polokarto.</p>
               </div>
             </div>
+
             <div
               class="umkm-card"
               data-lat="-7.62179679084908"
@@ -89,6 +150,7 @@
                 <p>📍 Jalan H.Muslich, Wonorejo, Jatisobo, Polokarto.</p>
               </div>
             </div>
+
             <div
               class="umkm-card"
               data-lat="-7.622220442825711"
@@ -102,17 +164,32 @@
                 <p>📍 Tegalan, Wonorejo, Kec. Polokarto.</p>
               </div>
             </div>
+
             <div
               class="umkm-card"
-              data-lat="-7.5591"
-              data-lng="110.8499"
-              data-name="Ayam Goreng Mbah Karto"
+              data-lat="-7.625064566620378"
+              data-lng="110.88579498207831"
+              data-name="Berkah Autowork"
             >
               <div class="card-image"></div>
               <div class="card-info">
-                <h3>Ayam Goreng Mbah Karto</h3>
-                <p>⭐ 5.0 (300 reviews)</p>
-                <p>📍 Jl. Raya Wonorejo</p>
+                <h3>Bengkel Berkah Autowork</h3>
+                <p>⭐ 5.0 (6 reviews)</p>
+                <p>📍 Bangunrejo, Wonorejo, Kec. Polokarto.</p>
+              </div>
+            </div>
+
+            <div
+              class="umkm-card"
+              data-lat="-7.621743273399074"
+              data-lng="110.88800428642746"
+              data-name="Berkah Autowork"
+            >
+              <div class="card-image"></div>
+              <div class="card-info">
+                <h3>NH Collection</h3>
+                <p>⭐ 4.4 (93 reviews)</p>
+                <p>📍 Tegalan, Wonorejo, Kec. Polokarto.</p>
               </div>
             </div>
           </div>
@@ -121,60 +198,64 @@
           </div>
         </div>
       </section>
-
-      <section id="about" class="container">
-        <h2>Tentang Kami</h2>
-        <div class="about-row">
-          <div class="about-image logo-circle" style="background-image: url('images/logo kkn.png');"></div>
-          <div class="about-text">
-            <h3>KKN 308 Wonorejo</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Doloremque assumenda incidunt id cum. Fugiat repellat cumque
-              delectus, at ipsum ad iure explicabo perferendis. At vero eos et
-              accusamus et iusto odio dignissimos ducimus.
-            </p>
-            <a href="https://www.instagram.com/cerita.wonorejo/" target="_blank" class="btn btn-secondary">Our Instagram</a>
-          </div>
-        </div>
-        <div class="about-row reverse">
-          <div class="about-image" style="background-image: url('images/kkn1.jfif');"></div>
-          <div class="about-text">
-            <h3>Anggota KKN</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Doloremque assumenda incidunt id cum. Fugiat repellat cumque
-              delectus, at ipsum ad iure explicabo perferendis. At vero eos et
-              accusamus et iusto odio dignissimos ducimus.
-            </p>
-            <a href="#" class="btn btn-secondary">Read More</a>
-          </div>
-        </div>
-      </section>
-
-      
     </main>
 
     <footer id="contact">
       <div class="container footer-container">
         <div class="footer-about">
-          <h3>KKN 308</h3>
-          <p>Recusandae quos nesciunt veniam eum quia.</p>
-          <p>bimoprawiradj@gmail.com</p>
+          <h3>KKN 308 WONOREJO</h3>
+          <p>
+            Website ini didedikasikan untuk menampilkan dan mempromosikan
+            potensi UMKM yang ada di Desa Wonorejo.
+          </p>
         </div>
+
         <div class="footer-links">
-          <h3>Quick Links</h3>
-          <a href="#home">Home</a>
-          <a href="#about">About Us</a>
-          <a href="#umkm">Rooms</a>
-          <a href="#">Services</a>
+          <h3>Navigasi</h3>
+          <a href="#home">Beranda</a>
+          <a href="#about">Tentang Kami</a>
+          <a href="#umkm">Daftar UMKM</a>
+          <a href="#contact">Kontak</a>
         </div>
-        <div class="footer-links">
-          <h3>Support</h3>
-          <a href="#">FAQ</a>
-          <a href="#">Contact Us</a>
-          <a href="#">Terms of Service</a>
+
+        <div class="footer-contact">
+          <h3>Hubungi & Ikuti Kami</h3>
+          <p>
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:bimoprawiradj@gmail.com">bimoprawiradj@gmail.com</a>
+          </p>
+          
+          <div class="social-icons">
+            <a
+              href="https://www.instagram.com/cerita.wonorejo/"
+              target="_blank"
+              title="Instagram KKN"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/@desawonorejokecamatanpolok6225"
+              target="_blank"
+              title="Youtube Desa Wonorejo"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/bimopd/"
+              target="_blank"
+              title="LinkedIn"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a
+              href="https://github.com/bimoprawira"
+              target="_blank"
+              title="GitHub"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </div>
         </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 KKN 308 Desa Wonorejo. All Rights Reserved.</p>
       </div>
     </footer>
 

@@ -87,8 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         destination // Titik tujuan (UMKM)
                     ],
                     routeWhileDragging: true,
-                    // language: 'id', // Coba gunakan bahasa Indonesia untuk instruksi
-                    createMarker: function() { return null; } // Jangan buat marker baru untuk start/end, karena sudah ada
+                    createMarker: function() { return null; }
                 }).addTo(map);
             });
         });
@@ -97,4 +96,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Jalankan fungsi-fungsi utama
     locateUser();
     addCardListeners();
+
+    // --- LOGIKA PENCARIAN UMKM (KODE BARU DITAMBAHKAN DI SINI) ---
+    const searchInput = document.getElementById('umkm-search');
+    const umkmCards = document.querySelectorAll('.umkm-card');
+
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+
+        umkmCards.forEach(card => {
+            // Mengambil nama UMKM dari tag <h3> di dalam kartu
+            const umkmName = card.querySelector('.card-info h3').textContent.toLowerCase();
+
+            // Memeriksa apakah nama UMKM mengandung teks pencarian
+            if (umkmName.includes(searchTerm)) {
+                card.style.display = 'flex'; // Tampilkan kartu jika cocok
+            } else {
+                card.style.display = 'none'; // Sembunyikan kartu jika tidak cocok
+            }
+        });
+    });
+    // --- AKHIR LOGIKA PENCARIAN ---
+
 });

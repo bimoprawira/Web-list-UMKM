@@ -54,6 +54,13 @@ a {
   color: inherit;
 }
 
+.desc-landing {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 100px;
+  text-align: justify;
+}
+
 /* ================== HEADER ================== */
 header {
   width: 100%;
@@ -90,9 +97,74 @@ nav.container {
 }
 
 /* ================== HERO/HOME SECTION ================== */
+/* ================== HERO/HOME SECTION (VERSI BARU) ================== */
 #home {
-  padding-top: 10rem; /* Add padding to avoid being hidden by fixed header */
+  padding-top: 10rem;
+  padding-bottom: 7rem;
   text-align: center;
+  background-image: url("images/kkn.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative; /* Diperlukan untuk overlay */
+  z-index: 1;
+}
+
+/* Lapisan overlay gelap */
+#home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Hitam dengan 50% transparansi */
+  z-index: -1; /* Posisikan di belakang konten tapi di atas gambar */
+}
+
+/* Pastikan konten tetap di atas overlay */
+#home .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+#home .hero-content h1,
+#home .hero-content p {
+  color: var(--white-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Tambahkan bayangan agar teks lebih tajam */
+}
+
+#home .hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+#home .hero-content p {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+#home .hero-buttons .btn-primary {
+  background-color: var(--white-color);
+  color: var(--primary-color);
+  border-color: var(--white-color);
+}
+
+#home .hero-buttons .btn-primary:hover {
+  background-color: transparent;
+  color: var(--white-color);
+}
+
+#home .hero-buttons .btn-secondary {
+  background-color: transparent;
+  color: var(--white-color);
+  border-color: var(--white-color);
+}
+
+#home .hero-buttons .btn-secondary:hover {
+  background-color: var(--white-color);
+  color: var(--primary-color);
 }
 
 .hero-content h1 {
@@ -130,7 +202,7 @@ nav.container {
 .btn-secondary {
   background-color: transparent;
   color: var(--primary-color);
-  margin-left: 1rem;
+  margin-left: 0rem;
 }
 
 .btn-secondary:hover {
@@ -166,13 +238,35 @@ h2 {
 }
 
 .about-image.logo-circle {
-    flex: none; /* Agar ukurannya tidak meregang */
-    width: 300px;  /* Atur lebar lingkaran, sesuaikan jika perlu */
-    height: 300px; /* Tinggi harus sama dengan lebar untuk lingkaran sempurna */
-    border-radius: 50%; /* Ini yang membuatnya menjadi lingkaran */
-    margin: 0 auto; /* Agar posisi lingkaran di tengah kolomnya */
+    flex: none; 
+    width: 300px;  
+    height: 300px; 
+    border-radius: 50%;
+    margin: 0 auto;
+    background-size: contain; /* <-- UBAH ATAU TAMBAHKAN BARIS INI */
+    background-repeat: no-repeat; /* Pastikan gambar tidak berulang */
+    background-color: transparent; /* Pastikan latar belakang frame transparan */
+    border: none; /* Hapus border agar tidak terlihat mengelilingi logo PNG */
+    box-shadow: none; /* Hapus bayangan agar terlihat lebih bersih */
+    display: block;
+    object-fit: contain;
+  }
+/* Tambahkan kode ini ke file style.css Anda */
+.about-image-logo {
+  flex: 0 0 300px; /* Memberi lebar tetap pada logo */
+  width: 300px;
+  height: 300px;
+  object-fit: contain; /* Memastikan seluruh logo muat tanpa terpotong */
+  margin-right: 2rem; /* Memberi jarak dengan teks di sebelahnya */
 }
 
+/* Penyesuaian untuk tampilan mobile jika diperlukan */
+@media (max-width: 768px) {
+  .about-image-logo {
+    margin-right: 0;
+    margin-bottom: 1.5rem; /* Memberi jarak dengan teks di bawahnya */
+  }
+}
 .about-text {
   flex: 1;
 }
@@ -185,9 +279,33 @@ h2 {
 .about-text p {
   line-height: 1.7;
   margin-bottom: 1.5rem;
+  text-align: justify;
 }
 
 /* ================== UMKM LIST & MAP ================== */
+.search-container {
+  margin-bottom: 1.5rem; /* Jarak antara search bar dan list */
+}
+
+#umkm-search {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #ddd;
+  border-radius: var(--border-radius);
+  transition: border-color 0.3s;
+}
+
+#umkm-search:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+#umkm {
+  margin-bottom: 5rem; /* Anda bisa sesuaikan nilai ini untuk jarak yang lebih besar atau kecil */
+}
+
 .umkm-container {
   display: flex;
   gap: 2rem;
@@ -272,39 +390,96 @@ h2 {
 }
 
 /* ================== FOOTER ================== */
+/* ================== FOOTER (VERSI BARU) ================== */
 footer {
   background-color: #3e2723; /* Darker brown */
-  color: var(--white-color);
-  padding: 4rem 0;
+  color: #E0E0E0; /* Warna teks lebih terang agar mudah dibaca */
+  padding-top: 4rem;
 }
 
 .footer-container {
-  display: flex;
-  justify-content: space-between;
+  display: grid; /* Menggunakan grid untuk layout yang lebih fleksibel */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Kolom responsif */
   gap: 2rem;
+  padding-bottom: 3rem;
 }
 
-.footer-about,
-.footer-links {
-  flex: 1;
+.footer-about, .footer-links, .footer-contact {
+  padding: 0 1rem;
 }
 
-.footer-about h3,
-.footer-links h3 {
+.footer-about h3, .footer-links h3, .footer-contact h3 {
   color: var(--white-color);
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 
-.footer-links a {
+/* Garis bawah dekoratif untuk judul footer */
+.footer-about h3::after, .footer-links h3::after, .footer-contact h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--secondary-color);
+}
+
+.footer-about p, .footer-contact p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.footer-links a, .footer-contact a {
   display: block;
   margin-bottom: 0.8rem;
-  color: #e0e0e0;
-  transition: color 0.3s;
+  color: #E0E0E0;
+  transition: all 0.3s ease;
 }
 
-.footer-links a:hover {
+.footer-links a:hover, .footer-contact a:hover {
   color: var(--white-color);
+  padding-left: 5px;
+}
+
+.footer-contact p i {
+  margin-right: 10px;
+  color: var(--secondary-color);
+}
+
+.social-icons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--white-color);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  color: #3e2723;
+  padding-left: 0; /* Reset padding hover dari link biasa */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
 }
 
 /* GUNAKAN KODE CSS DARI JAWABAN SEBELUMNYA SECARA PENUH */
