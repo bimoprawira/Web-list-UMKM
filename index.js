@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let userMarker;
     let routingControl = null;
 
-    // Tentukan lokasi default (misal, Alun-alun Grogol, Sukoharjo sebagai fallback)
+    // Tentukan lokasi default
     const defaultLocation = [-7.6293, 110.8039];
 
     // Inisialisasi peta Leaflet
@@ -27,11 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
                     };
-                    
-                    // Pusatkan peta ke lokasi pengguna
                     map.setView(userLocation, 15);
-
-                    // Tambahkan penanda untuk lokasi pengguna
                     if (userMarker) {
                         map.removeLayer(userMarker);
                     }
@@ -40,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         .openPopup();
                 },
                 () => {
-                    // Gagal mendapatkan lokasi, gunakan default
                     alert("Akses lokasi ditolak. Menampilkan rute dari lokasi default.");
                     userLocation = { lat: defaultLocation[0], lng: defaultLocation[1] };
                 }
@@ -54,37 +49,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fungsi untuk menambahkan event click pada setiap kartu UMKM
     function addCardListeners() {
         const umkmCards = document.querySelectorAll('.umkm-card');
-
         umkmCards.forEach(card => {
             card.addEventListener('click', () => {
-                // Cek jika lokasi pengguna sudah didapatkan
                 if (!userLocation) {
                     alert("Tidak dapat menemukan lokasi Anda. Mohon izinkan akses lokasi pada browser Anda dan coba lagi.");
                     return;
                 }
-
-                // Hapus kelas 'active' dari semua kartu
                 umkmCards.forEach(c => c.classList.remove('active'));
-                // Tambahkan kelas 'active' ke kartu yang diklik
                 card.classList.add('active');
-
-                // Ambil koordinat tujuan dari atribut data-*
                 const destination = L.latLng(
                     parseFloat(card.dataset.lat),
                     parseFloat(card.dataset.lng)
                 );
-                
-                // Hapus rute sebelumnya jika ada
                 if (routingControl !== null) {
                     map.removeControl(routingControl);
                     routingControl = null;
                 }
-
-                // Buat rute baru
                 routingControl = L.Routing.control({
                     waypoints: [
-                        L.latLng(userLocation.lat, userLocation.lng), // Titik awal (pengguna)
-                        destination // Titik tujuan (UMKM)
+                        L.latLng(userLocation.lat, userLocation.lng),
+                        destination
                     ],
                     routeWhileDragging: true,
                     createMarker: function() { return null; }
@@ -97,25 +81,46 @@ document.addEventListener('DOMContentLoaded', () => {
     locateUser();
     addCardListeners();
 
-    // --- LOGIKA PENCARIAN UMKM (KODE BARU DITAMBAHKAN DI SINI) ---
+    // --- LOGIKA MENU HAMBURGER (KODE BARU) ---
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show-menu');
+            const icon = navToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('show-menu')) {
+                navMenu.classList.remove('show-menu');
+                const icon = navToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+    // --- AKHIR LOGIKA MENU HAMBURGER ---
+
+    // --- LOGIKA PENCARIAN UMKM ---
     const searchInput = document.getElementById('umkm-search');
     const umkmCards = document.querySelectorAll('.umkm-card');
 
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
-
         umkmCards.forEach(card => {
-            // Mengambil nama UMKM dari tag <h3> di dalam kartu
             const umkmName = card.querySelector('.card-info h3').textContent.toLowerCase();
-
-            // Memeriksa apakah nama UMKM mengandung teks pencarian
             if (umkmName.includes(searchTerm)) {
-                card.style.display = 'flex'; // Tampilkan kartu jika cocok
+                card.style.display = 'flex';
             } else {
-                card.style.display = 'none'; // Sembunyikan kartu jika tidak cocok
+                card.style.display = 'none';
             }
         });
     });
     // --- AKHIR LOGIKA PENCARIAN ---
-
 });
