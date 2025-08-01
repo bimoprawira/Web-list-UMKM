@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>List UMKM - KKN 308</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="umkm-list" id="umkmList">
+    <h3>List UMKM</h3>
+    <div class="umkm-item" onclick="showRoute(UMKMS[0])">
+      <strong>Rumah Makan Sederhana</strong><br />
+      ⭐ 4.9 (120 reviews)<br />
+      📍 Jl. Desa No.1
+    </div>
+    <div class="umkm-item" onclick="showRoute(UMKMS[1])">
+      <strong>Bakso Enak</strong><br />
+      ⭐ 4.7 (98 reviews)<br />
+      📍 Jl. Sawah No.3
+    </div>
+  </div>
+
+  <div id="map"></div>
+
+  <script src="index.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap">
+  </script>
+</body>
+</html>

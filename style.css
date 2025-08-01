@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  height: 100vh;
+  margin: 0;
+}
+
+.umkm-list {
+  width: 30%;
+  padding: 20px;
+  overflow-y: scroll;
+  border-right: 1px solid #ccc;
+}
+
+.umkm-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.umkm-item:hover {
+  background-color: #f0f0f0;
+}
+
+#map {
+  width: 70%;
+  height: 100vh;
+}
