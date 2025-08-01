@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KKN 308 Desa Wonorejo - UMKM</title>
+    <title>KKN 308 Desa Wonorejo - UMKM (Versi OSM)</title>
+    
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
@@ -38,8 +43,7 @@
         <section id="about" class="container">
             <h2>Tentang Kami</h2>
             <div class="about-row">
-                <div class="about-image">
-                    </div>
+                <div class="about-image"></div>
                 <div class="about-text">
                     <h3>KKN 308 Wonorejo</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque assumenda incidunt id cum. Fugiat repellat cumque delectus, at ipsum ad iure explicabo perferendis. At vero eos et accusamus et iusto odio dignissimos ducimus.</p>
@@ -47,8 +51,7 @@
                 </div>
             </div>
             <div class="about-row reverse">
-                <div class="about-image">
-                    </div>
+                <div class="about-image"></div>
                 <div class="about-text">
                     <h3>Anggota KKN</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque assumenda incidunt id cum. Fugiat repellat cumque delectus, at ipsum ad iure explicabo perferendis. At vero eos et accusamus et iusto odio dignissimos ducimus.</p>
@@ -61,33 +64,30 @@
             <h2>List UMKM</h2>
             <div class="umkm-container">
                 <div id="list-panel">
-                    <div class="umkm-card" data-lat="-7.5562" data-lng="110.8524" data-name="Soto Ayam Gobyos">
+                    <div class="umkm-card" data-lat="-7.621637775206332" data-lng="110.89299823715982" data-name="Mafaza Store">
                         <div class="card-image"></div>
                         <div class="card-info">
-                            <h3>Soto Ayam Gobyos</h3>
-                            <p>⭐ 4.8 (150 reviews)</p>
-                            <p>📍 Jl. Merdeka No. 12</p>
+                            <h3>Mafaza Moslem Store</h3>
+                            <p>⭐ 4.5 (37 reviews)</p>
+                            <p>📍 Blimbing, Wonorejo, Polokarto.</p>
                         </div>
                     </div>
-
-                    <div class="umkm-card" data-lat="-7.5580" data-lng="110.8550" data-name="Bakso Pak Kumis">
+                    <div class="umkm-card" data-lat="-7.62179679084908" data-lng="110.89327686773031" data-name="Toko Nayla">
                         <div class="card-image"></div>
                         <div class="card-info">
-                             <h3>Bakso Pak Kumis</h3>
-                            <p>⭐ 4.9 (210 reviews)</p>
-                            <p>📍 Jl. Pahlawan No. 45</p>
+                             <h3>Toko Nayla</h3>
+                            <p>⭐ 4.3 (125 reviews)</p>
+                            <p>📍 Jalan H.Muslich, Wonorejo, Jatisobo, Polokarto.</p>
                         </div>
                     </div>
-                    
-                    <div class="umkm-card" data-lat="-7.5545" data-lng="110.8510" data-name="Warung Makan Bu Tinah">
+                    <div class="umkm-card" data-lat="-7.622220442825711" data-lng="110.88967426438842" data-name="Baldes">
                         <div class="card-image"></div>
                         <div class="card-info">
-                             <h3>Warung Makan Bu Tinah</h3>
-                            <p>⭐ 4.7 (98 reviews)</p>
-                            <p>📍 Gg. Sejahtera III</p>
+                             <h3>Balai Desa Wonorejo</h3>
+                            <p>⭐ 4.9 (7 reviews)</p>
+                            <p>📍 Tegalan, Wonorejo, Kec. Polokarto.</p>
                         </div>
                     </div>
-                    
                      <div class="umkm-card" data-lat="-7.5591" data-lng="110.8499" data-name="Ayam Goreng Mbah Karto">
                         <div class="card-image"></div>
                         <div class="card-info">
@@ -96,7 +96,6 @@
                             <p>📍 Jl. Raya Wonorejo</p>
                         </div>
                     </div>
-
                 </div>
                 <div id="map-panel">
                     <div id="map"></div>
@@ -110,7 +109,7 @@
             <div class="footer-about">
                 <h3>KKN 308</h3>
                 <p>Recusandae quos nesciunt veniam eum quia.</p>
-                <p>shaikhsadd258@gmail.com</p>
+                <p>bimoprawiradj@gmail.com</p>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
@@ -128,8 +127,11 @@
         </div>
     </footer>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=geometry" async defer></script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     
     <script src="index.js"></script>
+
 </body>
 </html>

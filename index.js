@@ -1,117 +1,100 @@
-// Global variables
-let map;
-let directionsService;
-let directionsRenderer;
-let userLocation;
+// Tunggu hingga seluruh halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
 
-// Fungsi utama yang dipanggil oleh Google Maps API setelah script dimuat
-function initMap() {
-    // Inisialisasi layanan yang diperlukan
-    directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer();
+    // Global variables
+    let map;
+    let userLocation;
+    let userMarker;
+    let routingControl = null;
 
-    // Tentukan lokasi default (misal, pusat kota Solo sebagai fallback)
-    const defaultLocation = { lat: -7.5562, lng: 110.8316 };
+    // Tentukan lokasi default (misal, Alun-alun Grogol, Sukoharjo sebagai fallback)
+    const defaultLocation = [-7.6293, 110.8039];
 
-    // Buat peta
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: defaultLocation,
-        mapTypeControl: false,
-        streetViewControl: false,
-    });
+    // Inisialisasi peta Leaflet
+    map = L.map('map').setView(defaultLocation, 14);
 
-    // Hubungkan renderer ke peta
-    directionsRenderer.setMap(map);
+    // Tambahkan 'tile layer' dari OpenStreetMap ke peta
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-    // Coba dapatkan lokasi pengguna
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                userLocation = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                };
+    // Fungsi untuk mendapatkan lokasi pengguna
+    function locateUser() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
+                    
+                    // Pusatkan peta ke lokasi pengguna
+                    map.setView(userLocation, 15);
 
-                // Buat penanda untuk lokasi pengguna
-                new google.maps.Marker({
-                    position: userLocation,
-                    map: map,
-                    title: "Lokasi Anda",
-                    icon: {
-                        path: google.maps.SymbolPath.CIRCLE,
-                        scale: 8,
-                        fillColor: "#4285F4",
-                        fillOpacity: 1,
-                        strokeColor: "white",
-                        strokeWeight: 2,
-                    },
-                });
-                
-                // Pusatkan peta ke lokasi pengguna
-                map.setCenter(userLocation);
-            },
-            () => {
-                // Gagal mendapatkan lokasi, tetap gunakan default
-                console.warn("Error: The Geolocation service failed.");
-            }
-        );
-    } else {
-        // Browser tidak mendukung Geolocation
-        console.warn("Error: Your browser doesn't support geolocation.");
+                    // Tambahkan penanda untuk lokasi pengguna
+                    if (userMarker) {
+                        map.removeLayer(userMarker);
+                    }
+                    userMarker = L.marker(userLocation).addTo(map)
+                        .bindPopup('<b>Lokasi Anda Saat Ini</b>')
+                        .openPopup();
+                },
+                () => {
+                    // Gagal mendapatkan lokasi, gunakan default
+                    alert("Akses lokasi ditolak. Menampilkan rute dari lokasi default.");
+                    userLocation = { lat: defaultLocation[0], lng: defaultLocation[1] };
+                }
+            );
+        } else {
+            alert("Browser Anda tidak mendukung geolokasi. Rute akan ditampilkan dari lokasi default.");
+            userLocation = { lat: defaultLocation[0], lng: defaultLocation[1] };
+        }
     }
 
-    // Tambahkan event listener untuk setiap kartu UMKM
-    addCardListeners();
-}
+    // Fungsi untuk menambahkan event click pada setiap kartu UMKM
+    function addCardListeners() {
+        const umkmCards = document.querySelectorAll('.umkm-card');
 
-// Fungsi untuk menambahkan event click pada setiap kartu UMKM
-function addCardListeners() {
-    const umkmCards = document.querySelectorAll('.umkm-card');
+        umkmCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Cek jika lokasi pengguna sudah didapatkan
+                if (!userLocation) {
+                    alert("Tidak dapat menemukan lokasi Anda. Mohon izinkan akses lokasi pada browser Anda dan coba lagi.");
+                    return;
+                }
 
-    umkmCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // Cek jika lokasi pengguna sudah didapatkan
-            if (!userLocation) {
-                alert("Tidak dapat menemukan lokasi Anda. Mohon izinkan akses lokasi pada browser Anda.");
-                return;
-            }
+                // Hapus kelas 'active' dari semua kartu
+                umkmCards.forEach(c => c.classList.remove('active'));
+                // Tambahkan kelas 'active' ke kartu yang diklik
+                card.classList.add('active');
 
-            // Hapus kelas 'active' dari semua kartu
-            umkmCards.forEach(c => c.classList.remove('active'));
-            // Tambahkan kelas 'active' ke kartu yang diklik
-            card.classList.add('active');
+                // Ambil koordinat tujuan dari atribut data-*
+                const destination = L.latLng(
+                    parseFloat(card.dataset.lat),
+                    parseFloat(card.dataset.lng)
+                );
+                
+                // Hapus rute sebelumnya jika ada
+                if (routingControl !== null) {
+                    map.removeControl(routingControl);
+                    routingControl = null;
+                }
 
-            // Ambil koordinat tujuan dari atribut data-*
-            const destination = {
-                lat: parseFloat(card.dataset.lat),
-                lng: parseFloat(card.dataset.lng)
-            };
-            
-            const destinationName = card.dataset.name;
-
-            // Hitung dan tampilkan rute
-            calculateAndDisplayRoute(userLocation, destination, destinationName);
+                // Buat rute baru
+                routingControl = L.Routing.control({
+                    waypoints: [
+                        L.latLng(userLocation.lat, userLocation.lng), // Titik awal (pengguna)
+                        destination // Titik tujuan (UMKM)
+                    ],
+                    routeWhileDragging: true,
+                    // language: 'id', // Coba gunakan bahasa Indonesia untuk instruksi
+                    createMarker: function() { return null; } // Jangan buat marker baru untuk start/end, karena sudah ada
+                }).addTo(map);
+            });
         });
-    });
-}
+    }
 
-// Fungsi untuk menghitung dan menampilkan rute di peta
-function calculateAndDisplayRoute(origin, destination, destinationName) {
-    const request = {
-        origin: origin,
-        destination: destination,
-        travelMode: google.maps.TravelMode.DRIVING // Bisa diganti DRIVING, WALKING, BICYCLING
-    };
-
-    directionsService.route(request, (result, status) => {
-        if (status === 'OK') {
-            directionsRenderer.setDirections(result);
-            
-            // Opsional: berikan info tambahan
-            console.log(`Menampilkan rute ke ${destinationName}`);
-        } else {
-            window.alert('Gagal menampilkan rute: ' + status);
-        }
-    });
-}
+    // Jalankan fungsi-fungsi utama
+    locateUser();
+    addCardListeners();
+});
