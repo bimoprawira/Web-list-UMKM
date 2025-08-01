@@ -1,298 +1,310 @@
 /* ================== GENERAL STYLING ================== */
 :root {
-    --primary-color: #5D4037; /* Coklat tua */
-    --secondary-color: #A1887F; /* Coklat muda */
-    --background-color: #F7F5F4;
-    --text-color: #333;
-    --white-color: #FFF;
-    --border-radius: 12px;
-    --box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  --primary-color: #5d4037; /* Coklat tua */
+  --secondary-color: #a1887f; /* Coklat muda */
+  --background-color: #f7f5f4;
+  --text-color: #333;
+  --white-color: #fff;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .container {
-    max-width: 1120px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1.5rem;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
 }
 
 section {
-    padding: 5rem 0;
+  padding: 5rem 0;
 }
 
-h1, h2, h3 {
-    color: var(--primary-color);
-    font-weight: 700;
+h1,
+h2,
+h3 {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 h2 {
-    text-align: center;
-    font-size: 2.25rem;
-    margin-bottom: 3rem;
+  text-align: center;
+  font-size: 2.25rem;
+  margin-bottom: 3rem;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* ================== HEADER ================== */
 header {
-    width: 100%;
-    background-color: var(--white-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  width: 100%;
+  background-color: var(--white-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 nav.container {
-    height: 5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary-color);
 }
 
 .nav-menu a {
-    margin-left: 2.5rem;
-    font-weight: 500;
-    color: var(--text-color);
-    transition: color 0.3s;
+  margin-left: 2.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: color 0.3s;
 }
 
 .nav-menu a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 /* ================== HERO/HOME SECTION ================== */
 #home {
-    padding-top: 10rem; /* Add padding to avoid being hidden by fixed header */
-    text-align: center;
+  padding-top: 10rem; /* Add padding to avoid being hidden by fixed header */
+  text-align: center;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero-content p {
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #666;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
 }
 
 .btn {
-    padding: 12px 28px;
-    border-radius: var(--border-radius);
-    font-weight: 500;
-    transition: all 0.3s;
-    border: 2px solid var(--primary-color);
-    display: inline-block;
+  padding: 12px 28px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: all 0.3s;
+  border: 2px solid var(--primary-color);
+  display: inline-block;
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+  background-color: var(--primary-color);
+  color: var(--white-color);
 }
 
 .btn-primary:hover {
-    background-color: transparent;
-    color: var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
 }
 
 .btn-secondary {
-    background-color: transparent;
-    color: var(--primary-color);
-    margin-left: 1rem;
+  background-color: transparent;
+  color: var(--primary-color);
+  margin-left: 1rem;
 }
 
 .btn-secondary:hover {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+  background-color: var(--primary-color);
+  color: var(--white-color);
 }
 
-
 /* ================== ABOUT SECTION ================== */
-h2{
+h2 {
   margin-top: 5rem;
 }
 .about-row {
-    display: flex;
-    align-items: center;
-    gap: 5rem;
-    margin-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  margin-bottom: 5rem;
 }
 
 .about-row.reverse {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .about-image {
+
     flex: 1;
     height: 350px;
-    background-color: #E0E0E0;
+    background-size: cover;
+    background-position: center;
     border: 3px solid var(--white-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius); /* border-radius ini untuk sudut kotak agar tidak tajam */
     box-shadow: var(--box-shadow);
+
+}
+
+.about-image.logo-circle {
+    flex: none; /* Agar ukurannya tidak meregang */
+    width: 300px;  /* Atur lebar lingkaran, sesuaikan jika perlu */
+    height: 300px; /* Tinggi harus sama dengan lebar untuk lingkaran sempurna */
+    border-radius: 50%; /* Ini yang membuatnya menjadi lingkaran */
+    margin: 0 auto; /* Agar posisi lingkaran di tengah kolomnya */
 }
 
 .about-text {
-    flex: 1;
+  flex: 1;
 }
 
 .about-text h3 {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
 }
 
 .about-text p {
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
 }
-
 
 /* ================== UMKM LIST & MAP ================== */
 .umkm-container {
-    display: flex;
-    gap: 2rem;
-    height: 600px;
+  display: flex;
+  gap: 2rem;
+  height: 600px;
 }
 
 #list-panel {
-    flex: 1;
-    overflow-y: auto;
-    padding-right: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 #map-panel {
-    flex: 2;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
+  flex: 2;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
 }
 
 #map {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .umkm-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background-color: var(--white-color);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--white-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
 }
 
 .umkm-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .umkm-card.active {
-    border-color: var(--primary-color);
-    box-shadow: 0 8px 20px rgba(93, 64, 55, 0.3);
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 20px rgba(93, 64, 55, 0.3);
 }
 
 .card-image {
-    width: 80px;
-    height: 80px;
-    background-color: #E0E0E0;
-    border-radius: 8px;
-    flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .card-info h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
 }
 
 .card-info p {
-    font-size: 0.9rem;
-    color: #777;
+  font-size: 0.9rem;
+  color: #777;
 }
 
 /* Scrollbar styling */
 #list-panel::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 #list-panel::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
 #list-panel::-webkit-scrollbar-thumb {
-    background: var(--secondary-color);
-    border-radius: 4px;
+  background: var(--secondary-color);
+  border-radius: 4px;
 }
 #list-panel::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
+  background: var(--primary-color);
 }
-
 
 /* ================== FOOTER ================== */
 footer {
-    background-color: #3E2723; /* Darker brown */
-    color: var(--white-color);
-    padding: 4rem 0;
+  background-color: #3e2723; /* Darker brown */
+  color: var(--white-color);
+  padding: 4rem 0;
 }
 
 .footer-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
-.footer-about, .footer-links {
-    flex: 1;
+.footer-about,
+.footer-links {
+  flex: 1;
 }
 
-.footer-about h3, .footer-links h3 {
-    color: var(--white-color);
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
+.footer-about h3,
+.footer-links h3 {
+  color: var(--white-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .footer-links a {
-    display: block;
-    margin-bottom: 0.8rem;
-    color: #E0E0E0;
-    transition: color 0.3s;
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #e0e0e0;
+  transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    color: var(--white-color);
+  color: var(--white-color);
 }
 
 /* GUNAKAN KODE CSS DARI JAWABAN SEBELUMNYA SECARA PENUH */
@@ -300,13 +312,82 @@ footer {
 
 /* Pastikan bagian ini ada */
 #map {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 /* Anda mungkin ingin menambahkan ini agar panel rute dari Leaflet terlihat lebih baik */
 .leaflet-routing-container {
-    background-color: white;
-    padding: 10px;
-    border-radius: 8px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* ... (kode CSS sebelumnya) ... */
+
+/* Styling untuk logo di navigasi */
+nav.container .nav-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+nav.container .nav-logo-container .logo-placeholder {
+  width: 40px; /* Sesuaikan ukuran logo */
+  height: 40px;
+  border-radius: 50%;
+  /* background-color: var(--secondary-color); */ /* HAPUS atau KOMENTARI baris ini */
+  margin-right: 10px; /* Jarak antara logo dan teks */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Agar gambar di dalam lingkaran tidak keluar */
+  background-color: transparent; /* Tambahkan ini untuk memastikan latar belakang transparan */
+}
+
+nav.container .nav-logo-container .logo-placeholder img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain; /* Ganti cover dengan contain agar seluruh logo terlihat */
+}
+
+/* Styling untuk background hero section */
+#home {
+  padding-top: 10rem;
+  text-align: center;
+  background-image: url("images/kkn.jpg"); /* Ganti 'hero-background.jpg' dengan path gambar Anda */
+  background-size: cover;
+  background-position: center;
+  color: var(
+    --white-color
+  ); /* Ubah warna teks agar terlihat di atas background */
+  padding-bottom: 7rem; /* Tambah padding bawah agar konten tidak terlalu dekat footer */
+}
+
+#home .hero-content h1,
+#home .hero-content p {
+  color: var(--white-color); /* Pastikan judul dan deskripsi berwarna putih */
+}
+
+#home .hero-buttons .btn-primary {
+  background-color: var(--white-color);
+  color: var(--primary-color);
+  border-color: var(--white-color);
+}
+
+#home .hero-buttons .btn-primary:hover {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+#home .hero-buttons .btn-secondary {
+  background-color: transparent;
+  color: var(--white-color);
+  border-color: var(--white-color);
+}
+
+#home .hero-buttons .btn-secondary:hover {
+  background-color: var(--white-color);
+  color: var(--primary-color);
 }
