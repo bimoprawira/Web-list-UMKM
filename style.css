@@ -356,12 +356,29 @@ h2 {
   box-shadow: 0 8px 20px rgba(93, 64, 55, 0.3);
 }
 
-.card-image {
+/* .card-image {
   width: 80px;
   height: 80px;
   background-color: #e0e0e0;
   border-radius: 8px;
   flex-shrink: 0;
+} */
+
+/* Hapus atau ganti blok .card-image dengan ini */
+.card-icon-container {
+  flex-shrink: 0;
+  width: 60px; /* Lebar lingkaran */
+  height: 60px; /* Tinggi lingkaran */
+  background-color: var(--secondary-color); /* Warna latar ikon */
+  border-radius: 50%; /* Membuatnya menjadi lingkaran */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-icon-container i {
+  font-size: 1.8rem; /* Ukuran ikon */
+  color: var(--white-color); /* Warna ikon */
 }
 
 .card-info h3 {
